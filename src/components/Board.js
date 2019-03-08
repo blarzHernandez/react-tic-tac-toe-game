@@ -8,6 +8,7 @@ class Board extends Component{
         super(props);
      //Initial state
      this.state = {
+         boardSize:3,
          squares:Array(9).fill(null), //board size
          player1IsNext : true, //By default start up player 1 (x)
          step:0
