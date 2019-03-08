@@ -1,5 +1,8 @@
 import React,{Component} from "react";
 import {Square} from "./Square";
+import './Board.css';
+
+
 class Board extends Component{
     constructor(props){
         super(props);
@@ -42,7 +45,23 @@ class Board extends Component{
             <div className = "board-wrapper">
                 <div className="board-header">Current Player</div>
                 <div className="board-body">
-                    <div className="row">{this.drawSquare(0)}</div>
+
+                    <div className="row">
+                        {this.drawSquare(0)}
+                        {this.drawSquare(1)}
+                        {this.drawSquare(2)}
+                    </div>
+                    <div className="row">
+                        {this.drawSquare(3)}
+                        {this.drawSquare(4)}
+                        {this.drawSquare(5)}
+                    </div>
+                    <div className="row">
+                        {this.drawSquare(6)}
+                        {this.drawSquare(7)}
+                        {this.drawSquare(8)}
+                    </div>
+
                 </div>
             </div>
         )
