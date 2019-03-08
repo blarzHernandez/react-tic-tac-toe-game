@@ -9,7 +9,8 @@ class Board extends Component{
      //Initial state
      this.state = {
          squares:Array(9).fill(null), //board size
-         player1IsNext : true //By default start up player 1 (x)
+         player1IsNext : true, //By default start up player 1 (x)
+         step:0
      }
     }
 
@@ -19,15 +20,15 @@ class Board extends Component{
      */
     handleClick(index){
         const squares = this.state.squares.slice();
-        //Check if a square is alread filled
-        console.log(squares[index]);
-        if(squares[index]){
+        //Check if a square is already  and also if someone has won the game 
+        if(squares[index] || this.computesWinner(squares) ){
             return;
         }
         squares[index] = this.whoIsNext();
         this.setState({
             squares,
-            player1IsNext:!this.state.player1IsNext
+            player1IsNext:!this.state.player1IsNext,
+            step: this.state.step + 1
         })
 
     }
@@ -84,7 +85,12 @@ class Board extends Component{
         if(winner){            
             headerState = `Player   ${winner}  won!`;
         }else{
-            headerState = `Its your turn: ${player}`;
+            if(this.state.step === this.state.squares.length){
+                headerState = `Its a draw!`;
+            }else{
+                headerState = `Its your turn: ${player}`;
+            }
+           
         }
         return(
             <div className ="board-wrapper">
