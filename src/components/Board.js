@@ -60,7 +60,7 @@ class Board extends Component{
             //destructuring the current value, we are getting the n  index there
             const [a,b,c] = odds[i];
             //Validate
-            if(squares[a] && square[a] === squares[b] && squares[a] === squares[c]){
+            if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
                 return squares[a];
             }
         }
@@ -68,9 +68,17 @@ class Board extends Component{
     }
 
     render(){
+        const winner = this.computesWinner(this.state.squares);
+        let headerState;
+        const player = this.state.player1IsNext ? 'X' : 'O';
+        if(winner){            
+            headerState = `Player   ${player}  won!`;
+        }else{
+            headerState = `Its your turn: ${player}`;
+        }
         return(
             <div className ="board-wrapper">
-                <div className="board-header">Your turn: {this.state.player1IsNext ? 'X' : 'O'}</div>
+                <div className="board-header">{headerState}</div>
                 <div className="board-body">
 
                     <div className="row">
