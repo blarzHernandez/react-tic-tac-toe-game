@@ -19,12 +19,22 @@ class Board extends Component{
      */
     handleClick(index){
         const squares = this.state.squares.slice();
-        squares[index] = this.state.player1IsNext ? 'X' : 'O';
+        //Check if a square is alread filled
+        console.log(squares[index]);
+        if(squares[index]){
+            return;
+        }
+        squares[index] = this.whoIsNext();
         this.setState({
             squares,
             player1IsNext:!this.state.player1IsNext
         })
 
+    }
+
+    //Knowing player's turn
+    whoIsNext(){
+        return this.state.player1IsNext ? 'X' : 'O';
     }
 
    /**
@@ -70,9 +80,9 @@ class Board extends Component{
     render(){
         const winner = this.computesWinner(this.state.squares);
         let headerState;
-        const player = this.state.player1IsNext ? 'X' : 'O';
+        const player = this.whoIsNext();
         if(winner){            
-            headerState = `Player   ${player}  won!`;
+            headerState = `Player   ${winner}  won!`;
         }else{
             headerState = `Its your turn: ${player}`;
         }
