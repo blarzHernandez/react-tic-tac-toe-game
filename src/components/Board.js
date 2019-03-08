@@ -39,11 +39,38 @@ class Board extends Component{
             />
         )
     }
+    /**
+     * Calculate who is the winner,based on 
+     * the odds (board size)
+     * @param {Array} squares 
+     */
+    computesWinner(squares){
+        const odds = [
+            [0,1,2],
+            [3,4,5],
+            [6,7,8],
+            [0,3,6],
+            [1,4,7],
+            [2,5,8],
+            [0,4,8],
+            [2,4,6]
+        ];
+        //Traverse our odds array
+        for (let i = 0; i < odds.length; i++) {
+            //destructuring the current value, we are getting the n  index there
+            const [a,b,c] = odds[i];
+            //Validate
+            if(squares[a] && square[a] === squares[b] && squares[a] === squares[c]){
+                return squares[a];
+            }
+        }
+        return null;
+    }
 
     render(){
         return(
-            <div className = "board-wrapper">
-                <div className="board-header">Current Player</div>
+            <div className ="board-wrapper">
+                <div className="board-header">Your turn: {this.state.player1IsNext ? 'X' : 'O'}</div>
                 <div className="board-body">
 
                     <div className="row">
