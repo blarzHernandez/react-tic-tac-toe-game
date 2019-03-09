@@ -40,6 +40,13 @@ class Board extends Component {
    */
   handleChange(e) {
     this.setState({
+      [e.target.name]:
+        e.target.value === 0 ? this.state.boardSize : e.target.value
+    });
+  }
+
+  switchPlayer(e) {
+    this.setState({
       [e.target.name]: e.target.value,
       player1IsNext: !this.state.player1IsNext
     });
@@ -57,6 +64,7 @@ class Board extends Component {
   drawSquare(index) {
     return (
       <Square
+        key={index}
         value={this.state.squares[index]}
         handleClick={() => this.handleClick(index)}
       />
@@ -94,12 +102,46 @@ class Board extends Component {
     return null;
   }
 
+  //Start the game
   rePlayGame() {
     this.setState({
       step: 0,
       squares: Array(9).fill(null),
-      player1IsNext: !this.state.player1IsNext
+      player1IsNext: true,
+      selectedValue: "player1"
     });
+  }
+
+  //render rows and cells
+  renderCells() {
+    const board = this.state.boardSize;
+
+    const rows = [];
+    let cellId = 0;
+    for (let c = 0; c < board; c++) {
+      const cells = [];
+
+      let rowId = `row-${c}`;
+      for (let row = 0; row < board; row++) {
+        cells.push(this.drawSquare(cellId));
+        cellId++;
+      }
+
+      rows.push(
+        <div className="row" key={rowId}>
+          {cells}
+        </div>
+      );
+    }
+
+    return rows;
+  }
+
+  isaDraw(step, squaresL) {
+    if (step === squaresL) {
+      return true;
+    }
+    return false;
   }
 
   render() {
@@ -107,9 +149,9 @@ class Board extends Component {
     let headerState;
     const player = this.whoIsNext() === "X" ? "Player 1" : "Player 2";
     if (winner) {
-      headerState = `${winner === "X" ? "Player 1" : "Player 2"}  won!`;
+      headerState = `${winner === "X" ? "Player 1" : "Player 2"}  wins!`;
     } else {
-      if (this.state.step === this.state.squares.length) {
+      if (this.isaDraw(this.state.step, this.state.squares.length)) {
         headerState = `Its a draw!`;
       } else {
         headerState = `Its your turn: ${player}`;
@@ -123,29 +165,14 @@ class Board extends Component {
           handleChange={e => {
             this.handleChange(e);
           }}
+          switchPlayer={e => this.switchPlayer(e)}
           selectedValue={selectedValue}
           rePlayGame={() => this.rePlayGame()}
         />
         <div className="board-wrapper">
           <div className="board-header">{headerState}</div>
           <div className="grid">
-            <div className="board-body">
-              <div className="row">
-                {this.drawSquare(0)}
-                {this.drawSquare(1)}
-                {this.drawSquare(2)}
-              </div>
-              <div className="row">
-                {this.drawSquare(3)}
-                {this.drawSquare(4)}
-                {this.drawSquare(5)}
-              </div>
-              <div className="row">
-                {this.drawSquare(6)}
-                {this.drawSquare(7)}
-                {this.drawSquare(8)}
-              </div>
-            </div>
+            <div className="board-body">{this.renderCells()}</div>
           </div>
         </div>
       </div>

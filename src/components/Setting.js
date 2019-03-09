@@ -8,7 +8,6 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-
 import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
@@ -70,13 +69,19 @@ const styles = theme => ({
   btnReplay: {
     display: "flex",
     justifyContent: "space-between",
-    marginLeft: "auto"
+    marginLeft: "10%"
   }
 });
 
 class Setting extends React.Component {
   render() {
-    const { classes, handleChange, selectedValue, rePlayGame } = this.props;
+    const {
+      classes,
+      handleChange,
+      selectedValue,
+      rePlayGame,
+      switchPlayer
+    } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -115,7 +120,7 @@ class Setting extends React.Component {
             </FormLabel>
             <Radio
               checked={selectedValue === "player1"}
-              onChange={handleChange}
+              onChange={switchPlayer}
               value="player1"
               name="selectedValue"
               aria-label="player1"
@@ -125,7 +130,7 @@ class Setting extends React.Component {
             </FormLabel>
             <Radio
               checked={selectedValue === "player2"}
-              onChange={handleChange}
+              onChange={switchPlayer}
               value="player2"
               name="selectedValue"
               aria-label="player2"

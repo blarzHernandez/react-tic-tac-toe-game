@@ -5,13 +5,13 @@ import { white } from "ansi-colors";
 
 const iconStyle = {
   border: "2px solid rgba(255,255,255,0.5)",
-  fontSize: "8em",
+  fontSize: "5em",
   fontWeight: "bold",
   verticalAlign: "middle",
-  height: "100",
-  textAlign: "center",
-  width: "100",
-  color: white
+  height: "100px",
+  width: "100px",
+  color: white,
+  textAlign: "center"
 };
 
 const styles = theme => ({

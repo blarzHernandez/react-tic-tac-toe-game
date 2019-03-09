@@ -1,19 +1,18 @@
-.row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
 .board-wrapper {
   position: absolute;
   background-color: rgba(240, 180, 135, 0.1);
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
-  top: 100px;
+  justify-content: center;
   padding: 25px;
   border-radius: 20px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.9), 1px 3px 5px rgba(0, 0, 0, 0.6);
-  width: 400px;
+  width: auto;
 }
 .grid {
   background-color: rgb(1, 27, 18);
+}
+.board-header {
+  font-size: 1.5em;
 }
