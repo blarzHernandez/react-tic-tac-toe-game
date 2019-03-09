@@ -17,7 +17,7 @@ This web app is simulation of the well-known paper-and-pencil game for two playe
 
 
 ## Running Tests
-Run the `yarn test` 
+Run `yarn test` 
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
