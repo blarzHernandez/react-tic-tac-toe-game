@@ -1,22 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
-import { white } from "ansi-colors";
-
-const iconStyle = {
-  border: "2px solid rgba(255,255,255,0.5)",
-  fontSize: "5em",
-  fontWeight: "bold",
-  verticalAlign: "middle",
-  height: "100px",
-  width: "100px",
-  color: white,
-  textAlign: "center"
-};
-
-const styles = theme => ({
-  iconStyle: iconStyle
-});
+import "./Square.css";
 /**
  * Render the proper Icon X or O
  * @param {String} playerTurn
@@ -33,8 +17,8 @@ const squareIcon = playerTurn => {
 };
 
 const Square = ({ handleClick, value, classes }) => (
-  <Icon className={classes.iconStyle} onClick={handleClick}>
-    {squareIcon(value)}
-  </Icon>
+  <button className="square" onClick={handleClick}>
+    {value}
+  </button>
 );
-export default withStyles(styles)(Square);
+export default Square;

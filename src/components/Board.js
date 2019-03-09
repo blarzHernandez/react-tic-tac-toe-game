@@ -39,9 +39,12 @@ class Board extends Component {
    * @param {Event} e
    */
   handleChange(e) {
+    if (isNaN(e.target.value)) return;
     this.setState({
       [e.target.name]:
-        e.target.value === 0 ? this.state.boardSize : e.target.value
+        e.target.value === 0 || e.target.value === ""
+          ? this.state.boardSize
+          : e.target.value
     });
   }
 
@@ -171,9 +174,7 @@ class Board extends Component {
         />
         <div className="board-wrapper">
           <div className="board-header">{headerState}</div>
-          <div className="grid">
-            <div className="board-body">{this.renderCells()}</div>
-          </div>
+          <div className="grid">{this.renderCells()}</div>
         </div>
       </div>
     );

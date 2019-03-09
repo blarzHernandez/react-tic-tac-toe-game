@@ -1,0 +1,11 @@
+.square {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  height: 100px;
+  background-color: rgba(240, 180, 135, 0);
+  width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Architects Daughter", "Helvetica", "sans-serif";
+  font-size: 5em;
+  color: white;
+}
