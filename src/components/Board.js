@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Square from "./Square";
+import Setting from "./Setting";
 import "./Board.css";
 
 class Board extends Component {
@@ -10,7 +11,8 @@ class Board extends Component {
       boardSize: 3,
       squares: Array(9).fill(null), //board size
       player1IsNext: true, //By default start up player 1 (x)
-      step: 0
+      step: 0,
+      selectedValue: "player1"
     };
   }
 
@@ -29,6 +31,17 @@ class Board extends Component {
       squares,
       player1IsNext: !this.state.player1IsNext,
       step: this.state.step + 1
+    });
+  }
+
+  /**
+   * Dinamically change the board size NxN
+   * @param {Event} e
+   */
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+      player1IsNext: !this.state.player1IsNext
     });
   }
 
@@ -81,12 +94,20 @@ class Board extends Component {
     return null;
   }
 
+  rePlayGame() {
+    this.setState({
+      step: 0,
+      squares: Array(9).fill(null),
+      player1IsNext: !this.state.player1IsNext
+    });
+  }
+
   render() {
     const winner = this.computesWinner(this.state.squares);
     let headerState;
-    const player = this.whoIsNext();
+    const player = this.whoIsNext() === "X" ? "Player 1" : "Player 2";
     if (winner) {
-      headerState = `Player   ${winner}  won!`;
+      headerState = `${winner === "X" ? "Player 1" : "Player 2"}  won!`;
     } else {
       if (this.state.step === this.state.squares.length) {
         headerState = `Its a draw!`;
@@ -94,24 +115,37 @@ class Board extends Component {
         headerState = `Its your turn: ${player}`;
       }
     }
+    const { selectedValue } = this.state;
+
     return (
-      <div className="board-wrapper">
-        <div className="board-header">{headerState}</div>
-        <div className="board-body">
-          <div className="row">
-            {this.drawSquare(0)}
-            {this.drawSquare(1)}
-            {this.drawSquare(2)}
-          </div>
-          <div className="row">
-            {this.drawSquare(3)}
-            {this.drawSquare(4)}
-            {this.drawSquare(5)}
-          </div>
-          <div className="row">
-            {this.drawSquare(6)}
-            {this.drawSquare(7)}
-            {this.drawSquare(8)}
+      <div>
+        <Setting
+          handleChange={e => {
+            this.handleChange(e);
+          }}
+          selectedValue={selectedValue}
+          rePlayGame={() => this.rePlayGame()}
+        />
+        <div className="board-wrapper">
+          <div className="board-header">{headerState}</div>
+          <div className="grid">
+            <div className="board-body">
+              <div className="row">
+                {this.drawSquare(0)}
+                {this.drawSquare(1)}
+                {this.drawSquare(2)}
+              </div>
+              <div className="row">
+                {this.drawSquare(3)}
+                {this.drawSquare(4)}
+                {this.drawSquare(5)}
+              </div>
+              <div className="row">
+                {this.drawSquare(6)}
+                {this.drawSquare(7)}
+                {this.drawSquare(8)}
+              </div>
+            </div>
           </div>
         </div>
       </div>

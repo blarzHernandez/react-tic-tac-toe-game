@@ -1,19 +1,17 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
+import { white } from "ansi-colors";
 
 const iconStyle = {
-  background: "#fff",
-  border: "1px solid #999",
-  float: "left",
-  fontSize: "6em",
+  border: "2px solid rgba(255,255,255,0.5)",
+  fontSize: "8em",
   fontWeight: "bold",
+  verticalAlign: "middle",
   height: "100",
-  marginRight: "-1px",
-  marginTop: "-1px",
-  padding: 0,
   textAlign: "center",
-  width: "100"
+  width: "100",
+  color: white
 };
 
 const styles = theme => ({

@@ -1,5 +1,19 @@
 .row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
+  clear: both;
+  content: "";
+  display: table;
+}
+.board-wrapper {
+  position: absolute;
+  background-color: rgba(240, 180, 135, 0.1);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.9), 1px 3px 5px rgba(0, 0, 0, 0.6);
+  width: 400px;
+}
+.grid {
+  background-color: rgb(1, 27, 18);
+}
