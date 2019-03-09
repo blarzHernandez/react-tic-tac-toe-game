@@ -1,6 +1,9 @@
 # Tic Tac Toe Game
 This web app is simulation of the well-known paper-and-pencil game for two players, X and O, who take turns marking by default the spaces in 3x3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game
 
+![tic-tac-toe-game](https://user-images.githubusercontent.com/13579333/54074486-85bfb700-4258-11e9-9194-a623b1331905.gif)
+
+
 # Stack
 - ReactJS
 - Material-ui
