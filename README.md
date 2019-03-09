@@ -10,7 +10,7 @@ This web app is simulation of the well-known paper-and-pencil game for two playe
 
 ## Installation
 
-1. Clone the repository : https://github.com/blarzHernandez/react-tic-tac-toe-game.git 
+1. Clone the repository executing `git clone https://github.com/blarzHernandez/react-tic-tac-toe-game.git` 
 2. Go the react-tic-tac-game folder and run `yarn install` command and wait until the dependencies have been downloaded
 3. Run `yarn start`command to run the development server
 4. Open http://localhost:3000 to view it in the browser.
