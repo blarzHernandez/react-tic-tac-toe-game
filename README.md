@@ -4,6 +4,7 @@ This web app is simulation of the well-known paper-and-pencil game for two playe
 # Stack
 - ReactJS
 - Material-ui
+- CSS
 - HTML
 - Yarn
 
